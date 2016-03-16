@@ -31,8 +31,9 @@ public class Principal {
 		enviadorAleatorio.addReceptor(receptorContador);
 		enviadorAleatorio.enviarEventos();
 		
+		//FIXME Alterar comportamento GeradorEventosAleatorioStrings, separando a criação do Aleatório somente com strings, evitando duplicação do método doTimer
 		// Requisito Extra 1 - Gerar eventos Aleatorios, apenas com String
-		Enviador enviadorAleatorioApenasComString = new Enviador("Evento - requisito Extra 1", new GeradorEventosAleatorioStrings());
+		Enviador enviadorAleatorioApenasComString = new Enviador("Evento - requisito Extra 1", new GeradorEventosAleatorioStrings()); 
 		enviadorAleatorioApenasComString.addReceptor(receptorInformacoes);
 		enviadorAleatorioApenasComString.addReceptor(receptorContador);
 
