@@ -1,10 +1,9 @@
 package br.inpe.cap.patterns.gerador;
 
 public class GeradorEventos5Segundos extends GeradorEventosAbstrato {
-
-	@Override
-	public long doTimer() {
-		return 5;
+	
+	public GeradorEventos5Segundos() {
+		this.periodicidadeGeradorEventos = new PeriodicidadeGeradorEventos5Segundo();
 	}
 
 }

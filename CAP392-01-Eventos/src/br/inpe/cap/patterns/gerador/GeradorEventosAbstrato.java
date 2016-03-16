@@ -7,6 +7,7 @@ public abstract class GeradorEventosAbstrato extends Thread implements GeradorEv
 	
 	private String string;
 	private Enviador enviador;
+	protected PeriodicidadeGeradorEventos periodicidadeGeradorEventos;
 	
 	@Override
 	public void setString(String string) {
@@ -17,6 +18,11 @@ public abstract class GeradorEventosAbstrato extends Thread implements GeradorEv
 	@Override
 	public void setEnviador(Enviador enviador) {
 		this.enviador = enviador;
+	}
+	
+	@Override
+	public long doTimer() {
+		return this.periodicidadeGeradorEventos.getPeriodicidade();
 	}
 
 	@Override
@@ -37,7 +43,7 @@ public abstract class GeradorEventosAbstrato extends Thread implements GeradorEv
 			this.enviador.notificaReceptores(evento);
 
 			try {
-				Thread.sleep(this.doTimer() * 1000);
+				Thread.sleep(this.doTimer());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
