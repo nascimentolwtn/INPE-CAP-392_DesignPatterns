@@ -3,6 +3,7 @@ package br.inpe.cap.patterns;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.inpe.cap.patterns.domain.Evento;
 import br.inpe.cap.patterns.gerador.GeradorEventos;
 import br.inpe.cap.patterns.receptor.ReceptorEventos;
 
@@ -15,18 +16,11 @@ public class Enviador {
 	public Enviador(String string, GeradorEventos geradorEventos) {
 		this.string = string;
 		this.geradorEventos = geradorEventos;
+		this.geradorEventos.setEnviador(this);
 		this.geradorEventos.setString(string);
 		this.receptores = new ArrayList<ReceptorEventos>();
 	}
 
-	public GeradorEventos getGeradorEventos() {
-		return geradorEventos;
-	}
-
-	public void setGeradorEventos(GeradorEventos geradorEventos) {
-		this.geradorEventos = geradorEventos;
-	}
-	
 	public String getString() {
 		return string;
 	}
@@ -39,17 +33,14 @@ public class Enviador {
 		return this.receptores.add(receptor);
 	}
 	
-	public void enviarEvento() {
-		for (ReceptorEventos receptorEventos : receptores) {
-			receptorEventos.receberEvento(this.geradorEventos.gerarEvento(this.string));
-		}
+	public void enviarEventos() {
+		this.geradorEventos.iniciarGeracaoEventos();
 	}
 
-	public void enviarEventos() {
+	public void notificaReceptores(Evento evento) {
 		for (ReceptorEventos receptorEventos : receptores) {
-			receptorEventos.receberEventos();
+			receptorEventos.receberEvento(evento);
 		}
-		this.geradorEventos.gerarEventos();
 	}
 
 	

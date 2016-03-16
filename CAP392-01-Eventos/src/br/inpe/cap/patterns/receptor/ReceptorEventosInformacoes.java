@@ -9,10 +9,4 @@ public class ReceptorEventosInformacoes implements ReceptorEventos {
 		System.out.println(evento.print());
 	}
 
-	@Override
-	public void receberEventos() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -20,9 +20,4 @@ public class ReceptorEventosContador implements ReceptorEventos {
 		System.out.println("Número de eventos recebidos: " + this.contador);
 	}
 
-	@Override
-	public void receberEventos() {
-		
-	}
-
 }

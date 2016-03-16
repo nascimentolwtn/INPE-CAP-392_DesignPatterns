@@ -1,14 +1,21 @@
 package br.inpe.cap.patterns.gerador;
 
+import br.inpe.cap.patterns.Enviador;
 import br.inpe.cap.patterns.domain.Evento;
 
 public abstract class GeradorEventosAbstrato extends Thread implements GeradorEventos {
 	
 	private String string;
+	private Enviador enviador;
 	
 	@Override
 	public void setString(String string) {
 		this.string = string;
+	}
+	
+	@Override
+	public void setEnviador(Enviador enviador) {
+		this.enviador = enviador;
 	}
 
 	@Override
@@ -17,7 +24,7 @@ public abstract class GeradorEventosAbstrato extends Thread implements GeradorEv
 	}
 	
 	@Override
-	public void gerarEventos() {
+	public void iniciarGeracaoEventos() {
 		this.start();
 	}
 	
@@ -26,10 +33,8 @@ public abstract class GeradorEventosAbstrato extends Thread implements GeradorEv
 		while(true){
 			
 			Evento evento = this.gerarEvento(this.string);
-			
-			//FIXME Impressão aqui apenas para teste. Fazer impressão correta ReceptorEventos
-			System.out.println(evento.print());
-			
+			this.enviador.notificaReceptores(evento);
+
 			try {
 				Thread.sleep(this.doTimer() * 1000);
 			} catch (InterruptedException e) {
