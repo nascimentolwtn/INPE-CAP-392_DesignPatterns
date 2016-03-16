@@ -35,8 +35,8 @@ public class Principal {
 		Enviador enviadorAleatorioApenasComString = new Enviador("Evento - requisito Extra 1", new GeradorEventosAleatorioStrings());
 		enviadorAleatorioApenasComString.addReceptor(receptorInformacoes);
 		enviadorAleatorioApenasComString.addReceptor(receptorContador);
-		enviadorAleatorioApenasComString.enviarEventos();
 
+		enviadorAleatorioApenasComString.enviarEventos();
 	}
 	
 }

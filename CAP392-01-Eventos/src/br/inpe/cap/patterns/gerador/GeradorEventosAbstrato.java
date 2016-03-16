@@ -11,6 +11,7 @@ public abstract class GeradorEventosAbstrato extends Thread implements GeradorEv
 	@Override
 	public void setString(String string) {
 		this.string = string;
+		this.setName("Thread GeradorEventos: " + string);
 	}
 	
 	@Override
