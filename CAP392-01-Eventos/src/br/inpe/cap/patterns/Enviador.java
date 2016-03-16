@@ -15,6 +15,7 @@ public class Enviador {
 	public Enviador(String string, GeradorEventos geradorEventos) {
 		this.string = string;
 		this.geradorEventos = geradorEventos;
+		this.geradorEventos.setString(string);
 		this.receptores = new ArrayList<ReceptorEventos>();
 	}
 
@@ -38,10 +39,17 @@ public class Enviador {
 		return this.receptores.add(receptor);
 	}
 	
-	public void enviarEventos() {
+	public void enviarEvento() {
 		for (ReceptorEventos receptorEventos : receptores) {
 			receptorEventos.receberEvento(this.geradorEventos.gerarEvento(this.string));
 		}
+	}
+
+	public void enviarEventos() {
+		for (ReceptorEventos receptorEventos : receptores) {
+			receptorEventos.receberEventos();
+		}
+		this.geradorEventos.gerarEventos();
 	}
 
 	
