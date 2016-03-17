@@ -3,8 +3,10 @@ package br.inpe.cap.patterns;
 import br.inpe.cap.patterns.gerador.GeradorEventos5Segundos;
 import br.inpe.cap.patterns.gerador.GeradorEventosAleatorio;
 import br.inpe.cap.patterns.gerador.GeradorEventosAleatorioStrings;
+import br.inpe.cap.patterns.gerador.GeradorEventosListaStrings;
 import br.inpe.cap.patterns.receptor.ReceptorEventos;
 import br.inpe.cap.patterns.receptor.ReceptorEventosContador;
+import br.inpe.cap.patterns.receptor.ReceptorEventosEnviador;
 import br.inpe.cap.patterns.receptor.ReceptorEventosInformacoes;
 
 public class Principal {
@@ -37,6 +39,19 @@ public class Principal {
 		enviadorAleatorioApenasComString.addReceptor(receptorContador);
 
 		enviadorAleatorioApenasComString.enviarEventos();
+
+		// Requisito Extra 2 - Toda vez que receber um evento com uma String, gera um novo evento
+		Enviador enviadorReceptor = new Enviador("Evento - requsito Extra 2", new GeradorEventosListaStrings());
+		ReceptorEventos receptorEventosEnviador = new ReceptorEventosEnviador(enviadorReceptor);
+
+		// enviadores já iniciaram o envio de eventos, apenas adiciona o novo receptor a cada um deles
+		enviador5segundos.addReceptor(receptorEventosEnviador);
+		enviadorAleatorio.addReceptor(receptorEventosEnviador);
+		enviadorAleatorioApenasComString.addReceptor(receptorEventosEnviador);
+		
+		enviadorReceptor.addReceptor(receptorInformacoes);
+		enviadorReceptor.enviarEventos();
+
 	}
 	
 }
