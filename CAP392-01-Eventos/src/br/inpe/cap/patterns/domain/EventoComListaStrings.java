@@ -6,12 +6,20 @@ public class EventoComListaStrings extends Evento {
 
 	private List<String> listaStrings;
 
-	private EventoComListaStrings(String string) {
+	public EventoComListaStrings(String string) {
 		super(string);
 	}
 
 	public EventoComListaStrings(List<String> listaStrings) {
 		super(listaStrings.toString());
+		this.listaStrings = listaStrings;
+	}
+
+	public List<String> getListaStrings() {
+		return listaStrings;
+	}
+
+	public void setListaStrings(List<String> listaStrings) {
 		this.listaStrings = listaStrings;
 	}
 	
