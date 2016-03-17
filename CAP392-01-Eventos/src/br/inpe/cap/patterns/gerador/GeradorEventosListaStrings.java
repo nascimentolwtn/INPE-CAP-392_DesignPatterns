@@ -3,7 +3,7 @@ package br.inpe.cap.patterns.gerador;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeradorEventosListaStrings extends GeradorEventosAbstrato {
+public class GeradorEventosListaStrings extends GeradorEventosThread {
 	
 	private List<String> listaStrings;
 	
