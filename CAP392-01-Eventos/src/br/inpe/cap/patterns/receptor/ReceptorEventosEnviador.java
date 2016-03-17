@@ -18,9 +18,10 @@ public class ReceptorEventosEnviador implements ReceptorEventos {
 	}
 
 	@Override
-	public void receberEvento(Evento evento) {
+	public synchronized void receberEvento(Evento evento) {
 		this.listaStringsRecebidasDosEventos.add(evento.getString());
-		EventoComListaStrings eventoComListaStrings = new EventoComListaStrings(this.listaStringsRecebidasDosEventos);
+		List<String> copiaListaStringRecebidas = new ArrayList<String>(this.listaStringsRecebidasDosEventos);
+		EventoComListaStrings eventoComListaStrings = new EventoComListaStrings(copiaListaStringRecebidas);
 		this.enviador.notificaReceptores(eventoComListaStrings);
 	}
 	
