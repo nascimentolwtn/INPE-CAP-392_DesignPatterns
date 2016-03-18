@@ -2,6 +2,7 @@ package br.inpe.cap.patterns.gerador;
 
 import br.inpe.cap.patterns.domain.Evento;
 import br.inpe.cap.patterns.domain.EventoMomentoGeracao;
+import br.inpe.cap.patterns.gerador.periodicidade.PeriodicidadeGeradorEventosAleatorio;
 
 public class GeradorEventosAleatorio extends GeradorEventosThread {
 

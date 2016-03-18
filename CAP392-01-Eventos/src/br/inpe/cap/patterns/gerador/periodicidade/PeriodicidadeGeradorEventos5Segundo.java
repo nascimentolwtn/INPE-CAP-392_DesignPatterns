@@ -1,4 +1,4 @@
-package br.inpe.cap.patterns.gerador;
+package br.inpe.cap.patterns.gerador.periodicidade;
 
 public class PeriodicidadeGeradorEventos5Segundo implements PeriodicidadeGeradorEventos {
 

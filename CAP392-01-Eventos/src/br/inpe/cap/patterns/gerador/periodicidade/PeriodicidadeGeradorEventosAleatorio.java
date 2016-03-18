@@ -1,4 +1,4 @@
-package br.inpe.cap.patterns.gerador;
+package br.inpe.cap.patterns.gerador.periodicidade;
 
 import java.util.Random;
 
