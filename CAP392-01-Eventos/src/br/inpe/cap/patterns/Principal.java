@@ -50,7 +50,7 @@ public class Principal {
 		enviadorAleatorioApenasComString.addReceptor(receptorEventosEnviador);
 		
 		enviadorReceptor.addReceptor(receptorInformacoes);
-		enviadorReceptor.enviarEventos();
+		enviadorReceptor.addReceptor(receptorContador);
 
 	}
 	
