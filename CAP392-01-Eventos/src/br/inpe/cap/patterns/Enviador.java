@@ -29,7 +29,7 @@ public class Enviador {
 		this.string = string;
 	}
 	
-	public boolean addReceptor(ReceptorEventos receptor){
+	public synchronized boolean addReceptor(ReceptorEventos receptor){
 		return this.receptores.add(receptor);
 	}
 	
@@ -37,7 +37,7 @@ public class Enviador {
 		this.geradorEventos.iniciarGeracaoEventos();
 	}
 
-	public void notificaReceptores(Evento evento) {
+	public synchronized void notificaReceptores(Evento evento) {
 		for (ReceptorEventos receptorEventos : receptores) {
 			receptorEventos.receberEvento(evento);
 		}
