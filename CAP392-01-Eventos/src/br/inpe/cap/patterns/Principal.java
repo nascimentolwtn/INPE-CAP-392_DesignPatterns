@@ -27,24 +27,17 @@ public class Principal {
 		
 		enviador5segundos.addReceptor(receptorInformacoes);
 		enviador5segundos.addReceptor(receptorContador);
-		enviador5segundos.enviarEventos();
-
 		enviadorAleatorio.addReceptor(receptorInformacoes);
 		enviadorAleatorio.addReceptor(receptorContador);
-		enviadorAleatorio.enviarEventos();
-		
 		// Requisito Extra 1 - Gerar eventos Aleatorios, apenas com String
 		Enviador enviadorAleatorioApenasComString = new Enviador("Evento - requisito Extra 1", new GeradorEventosAleatorioStrings());
 		enviadorAleatorioApenasComString.addReceptor(receptorInformacoes);
 		enviadorAleatorioApenasComString.addReceptor(receptorContador);
 
-		enviadorAleatorioApenasComString.enviarEventos();
-
 		// Requisito Extra 2 - Toda vez que receber um evento com uma String, gera um novo evento
 		Enviador enviadorReceptor = new Enviador("Evento - requsito Extra 2", new GeradorEventosListaStrings());
 		ReceptorEventos receptorEventosEnviador = new ReceptorEventosEnviador(enviadorReceptor);
 
-		// enviadores já iniciaram o envio de eventos, apenas adiciona o novo receptor a cada um deles
 		enviador5segundos.addReceptor(receptorEventosEnviador);
 		enviadorAleatorio.addReceptor(receptorEventosEnviador);
 		enviadorAleatorioApenasComString.addReceptor(receptorEventosEnviador);
@@ -52,6 +45,11 @@ public class Principal {
 		enviadorReceptor.addReceptor(receptorInformacoes);
 		enviadorReceptor.addReceptor(receptorContador);
 
+		// Inicia envios após preparar todos os Receptores
+		enviador5segundos.enviarEventos();
+		enviadorAleatorio.enviarEventos();
+		enviadorAleatorioApenasComString.enviarEventos();
+		
 	}
 	
 }
