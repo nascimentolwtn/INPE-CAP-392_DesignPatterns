@@ -37,6 +37,7 @@ public class Principal {
 		// Requisito Extra 2 - Toda vez que receber um evento com uma String, gera um novo evento
 		Enviador enviadorReceptor = new Enviador("Evento - requsito Extra 2", new GeradorEventosListaStrings());
 		ReceptorEventos receptorEventosEnviador = new ReceptorEventosEnviador(enviadorReceptor);
+		ReceptorEventos receptorEventosEnviadorContador = new ReceptorEventosContador();
 
 		enviador5segundos.addReceptor(receptorEventosEnviador);
 		enviadorAleatorio.addReceptor(receptorEventosEnviador);
@@ -44,6 +45,7 @@ public class Principal {
 		
 		enviadorReceptor.addReceptor(receptorInformacoes);
 		enviadorReceptor.addReceptor(receptorContador);
+		enviadorReceptor.addReceptor(receptorEventosEnviadorContador);
 
 		// Inicia envios após preparar todos os Receptores
 		enviador5segundos.enviarEventos();
