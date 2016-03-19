@@ -17,7 +17,7 @@ public class Enviador {
 		this.string = string;
 		this.geradorEventos = geradorEventos;
 		this.geradorEventos.setEnviador(this);
-		this.geradorEventos.setStringEvento(string);
+		this.geradorEventos.setStringDoEvento(string);
 		this.receptores = new ArrayList<ReceptorEventos>();
 	}
 
