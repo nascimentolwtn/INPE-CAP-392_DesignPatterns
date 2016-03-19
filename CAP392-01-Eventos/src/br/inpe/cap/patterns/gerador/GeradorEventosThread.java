@@ -11,7 +11,7 @@ public abstract class GeradorEventosThread extends Thread implements GeradorEven
 	protected PeriodicidadeGeradorEventos periodicidadeGeradorEventos;
 	
 	@Override
-	public void setStringEvento(String string) {
+	public void setString(String string) {
 		this.string = string;
 		this.setName("Thread GeradorEventos: " + string);
 	}
