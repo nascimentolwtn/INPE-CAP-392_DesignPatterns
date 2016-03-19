@@ -1,6 +1,6 @@
 package br.inpe.cap.patterns;
 
-import br.inpe.cap.patterns.gerador.GeradorEventos5Segundos;
+import br.inpe.cap.patterns.gerador.GeradorEventosFixo;
 import br.inpe.cap.patterns.gerador.GeradorEventosAleatorio;
 import br.inpe.cap.patterns.gerador.GeradorEventosAleatorioStrings;
 import br.inpe.cap.patterns.gerador.GeradorEventosListaStrings;
@@ -14,7 +14,7 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		// Requisito 1.1 - Gerar eventos a cada 5 segundos
-		Enviador enviador5segundos = new Enviador("Evento - requisito 1.1", new GeradorEventos5Segundos());
+		Enviador enviador5segundos = new Enviador("Evento - requisito 1.1", new GeradorEventosFixo());
 		
 		// Requisito 1.2 - Gerar eventos a cada 5 segundos
 		Enviador enviadorAleatorio = new Enviador("Evento - requisito 1.2", new GeradorEventosAleatorio());
