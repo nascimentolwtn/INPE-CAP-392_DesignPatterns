@@ -11,7 +11,7 @@ public interface GeradorEventos {
 	
 	long doTimer();
 
-	void setString(String string);
+	void setStringEvento(String string);
 
 	void setEnviador(Enviador enviador);
 	
