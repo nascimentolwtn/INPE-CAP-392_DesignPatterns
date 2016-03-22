@@ -5,8 +5,6 @@ import br.inpe.cap.patterns.domain.Evento;
 
 public interface GeradorEventos {
 	
-	void iniciarGeracaoEventos();
-	
 	Evento gerarEvento(String string);
 	
 	long doTimer();

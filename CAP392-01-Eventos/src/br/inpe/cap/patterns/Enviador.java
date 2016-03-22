@@ -34,7 +34,10 @@ public class Enviador {
 	}
 	
 	public void enviarEventos() {
-		this.geradorEventos.iniciarGeracaoEventos();
+		
+		Thread threadGeradorEventos = new Thread((Runnable) this.geradorEventos);
+		threadGeradorEventos.setName("Thread GeradorEventos: " + this.string);
+		threadGeradorEventos.start();
 	}
 
 	public synchronized void notificaReceptores(Evento evento) {

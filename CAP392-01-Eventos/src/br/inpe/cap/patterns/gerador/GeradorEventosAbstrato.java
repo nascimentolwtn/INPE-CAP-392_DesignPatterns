@@ -4,7 +4,7 @@ import br.inpe.cap.patterns.Enviador;
 import br.inpe.cap.patterns.domain.Evento;
 import br.inpe.cap.patterns.gerador.periodicidade.PeriodicidadeGeradorEventos;
 
-public abstract class GeradorEventosThread extends Thread implements GeradorEventos {
+public abstract class GeradorEventosAbstrato implements GeradorEventos, Runnable {
 	
 	private String string;
 	private Enviador enviador;
@@ -13,7 +13,6 @@ public abstract class GeradorEventosThread extends Thread implements GeradorEven
 	@Override
 	public void setStringDoEvento(String string) {
 		this.string = string;
-		this.setName("Thread GeradorEventos: " + string);
 	}
 	
 	@Override
@@ -29,11 +28,6 @@ public abstract class GeradorEventosThread extends Thread implements GeradorEven
 	@Override
 	public Evento gerarEvento(String string) {
 		return new Evento(string);
-	}
-	
-	@Override
-	public void iniciarGeracaoEventos() {
-		this.start();
 	}
 	
 	@Override
