@@ -1,23 +1,18 @@
 package br.inpe.cap.patterns.gerador;
 
-import br.inpe.cap.patterns.Enviador;
+import br.inpe.cap.patterns.EventoMediator;
 import br.inpe.cap.patterns.domain.Evento;
 import br.inpe.cap.patterns.gerador.periodicidade.PeriodicidadeGeradorEventos;
 
 public abstract class GeradorEventosAbstrato implements GeradorEventos, Runnable {
 	
 	private String string;
-	private Enviador enviador;
 	protected PeriodicidadeGeradorEventos periodicidadeGeradorEventos;
+	private EventoMediator eventoMediator;
 	
 	@Override
 	public void setStringDoEvento(String string) {
 		this.string = string;
-	}
-	
-	@Override
-	public void setEnviador(Enviador enviador) {
-		this.enviador = enviador;
 	}
 	
 	@Override
@@ -31,11 +26,16 @@ public abstract class GeradorEventosAbstrato implements GeradorEventos, Runnable
 	}
 	
 	@Override
+	public void setEventoMediator(EventoMediator eventoMediator) {
+		this.eventoMediator = eventoMediator;
+	}
+	
+	@Override
 	public void run() {
 		while(true){
 			
 			Evento evento = this.gerarEvento(this.string);
-			this.enviador.notificaReceptores(evento);
+			this.eventoMediator.notificaEventoProduzido(evento);
 
 			try {
 				Thread.sleep(this.doTimer());

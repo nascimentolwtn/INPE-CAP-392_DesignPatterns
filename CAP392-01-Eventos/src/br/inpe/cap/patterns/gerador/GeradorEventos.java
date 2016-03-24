@@ -1,6 +1,6 @@
 package br.inpe.cap.patterns.gerador;
 
-import br.inpe.cap.patterns.Enviador;
+import br.inpe.cap.patterns.EventoMediator;
 import br.inpe.cap.patterns.domain.Evento;
 
 public interface GeradorEventos {
@@ -11,6 +11,6 @@ public interface GeradorEventos {
 
 	void setStringDoEvento(String string);
 
-	void setEnviador(Enviador enviador);
+	void setEventoMediator(EventoMediator eventoMediator);
 	
 }
