@@ -1,34 +1,50 @@
 package br.inpe.cap.patterns;
 
+import static br.inpe.cap.patterns.NegocioStrategy.STRAT1;
+import static br.inpe.cap.patterns.NegocioStrategy.STRAT2;
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class TestNegocio {
 
-   Negocio negocio;
-   Negocio negocioSub1;
-   Negocio negocioSub2;
+	/**
+	 * a) Crie a classe Negocio, que retorna uma String com a palavra "negocio"
+	 */
+	@Test
+	public void testItemA() {
+		Negocio negocio = new Negocio();
+		assertEquals("negocio", negocio.executar());
+	}
 
-   @Before
-   public void setUp(){
-	   this.negocio = new Negocio();
-       this.negocioSub1 = new NegocioSub1();
-       this.negocioSub2 = new NegocioSub2();
-   }
+	/**
+	 * b) Chame no final do método executar(), um hook método. Crie duas subclasses que
+	 *    adicionam as palavras “sub1” e “sub2” no retorno desse método."
+	 */
+	@Test
+	public void testItemB() {
+		Negocio negocioSub1 = new NegocioSub1();
+		assertEquals("negociosub1", negocioSub1.executar());
 
-   @Test
-   public void testItemA() {
-       assertEquals("a) Crie a classe Negocio, que retorna uma String com a palavra \"negocio\".",
-    		  		"negocio", negocio.executar());
-   }
+		Negocio negocioSub2 = new NegocioSub2();
+		assertEquals("negociosub2", negocioSub2.executar());
+	}
 
-   @Test
-   public void testItemB() {
-	   // "b) Chame no final do método executar(), um hook método. Crie duas subclasses que adicionam as palavras “sub1” e “sub2” no retorno desse método."
-       assertEquals("negociosub1", negocioSub1.executar());
-       assertEquals("negociosub2", negocioSub2.executar());
-   }
+	/**
+	 * c) Crie um Strategy com duas subclasses que adicionam respectivamente “Strat1” e
+	 * “Strat2” na String retornada. Crie um Composite que permita que os dois possam ser
+	 * configurados. 
+	 */
+	@Test
+	public void testItemC() {
+		Negocio negocioSub1Strat1 = new NegocioSub1(STRAT1);
+		Negocio negocioSub1Strat2 = new NegocioSub1(STRAT2);
+		Negocio negocioSub2Strat1 = new NegocioSub2(STRAT1);
+		Negocio negocioSub2Strat2 = new NegocioSub2(STRAT2);
+		assertEquals("negociosub1Strat1", negocioSub1Strat1.executar());
+		assertEquals("negociosub1Strat2", negocioSub1Strat2.executar());
+		assertEquals("negociosub2Strat1", negocioSub2Strat1.executar());
+		assertEquals("negociosub2Strat2", negocioSub2Strat2.executar());
+	}
 
 }
