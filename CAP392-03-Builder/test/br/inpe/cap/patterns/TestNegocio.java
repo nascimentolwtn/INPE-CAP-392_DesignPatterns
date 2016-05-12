@@ -2,14 +2,21 @@ package br.inpe.cap.patterns;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestNegocio {
 
-	@Test
-	public void testExecutar() {
-		Negocio negocio = new Negocio();
-		assertEquals("negocio", negocio.executar());
-	}
+   Negocio negocio;
+   
+   @Before
+   public void setUp(){
+	   this.negocio = new Negocio();
+   }
+
+   @Test
+   public void testExecutar() {
+      assertEquals("negocio", negocio.executar());
+   }
 
 }
