@@ -15,8 +15,9 @@ public class TestNegocio {
    }
 
    @Test
-   public void testExecutar() {
-      assertEquals("negocio", negocio.executar());
+   public void testItemA() {
+      assertEquals("a) Crie a classe Negocio, que retorna uma String com a palavra \"negocio\".",
+    		  	   "negocio", negocio.executar());
    }
 
 }
