@@ -1,7 +1,5 @@
 package br.inpe.cap.patterns;
 
-import static br.inpe.cap.patterns.NegocioStrategy.STRAT1;
-import static br.inpe.cap.patterns.NegocioStrategy.STRAT2;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -37,14 +35,31 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemC() {
-		Negocio negocioSub1Strat1 = new NegocioSub1(STRAT1);
-		Negocio negocioSub1Strat2 = new NegocioSub1(STRAT2);
-		Negocio negocioSub2Strat1 = new NegocioSub2(STRAT1);
-		Negocio negocioSub2Strat2 = new NegocioSub2(STRAT2);
+		Negocio negocioSub1Strat1 = new NegocioSub1();
+		negocioSub1Strat1.setStrategy(NegocioStrategy.STRAT1);
+		
+		Negocio negocioSub1Strat2 = new NegocioSub1();
+		negocioSub1Strat2.setStrategy(NegocioStrategy.STRAT2);
+		
+		Negocio negocioSub2Strat1 = new NegocioSub2();
+		negocioSub2Strat1.setStrategy(NegocioStrategy.STRAT1);
+
+		Negocio negocioSub2Strat2 = new NegocioSub2();
+		negocioSub2Strat2.setStrategy(NegocioStrategy.STRAT2);
+		
 		assertEquals("negociosub1Strat1", negocioSub1Strat1.executar());
 		assertEquals("negociosub1Strat2", negocioSub1Strat2.executar());
 		assertEquals("negociosub2Strat1", negocioSub2Strat1.executar());
 		assertEquals("negociosub2Strat2", negocioSub2Strat2.executar());
+	}
+	
+	/**
+	 * d) Crie um proxy que pode ser adicionado nessa classe que adiciona “proxy” no retorno.
+	 */
+	@Test
+	public void testItemD() {
+		Negocio negocioProxy = new NegocioProxy(new Negocio());
+		assertEquals("negocioproxy", negocioProxy.executar());
 	}
 
 }

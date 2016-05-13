@@ -6,13 +6,13 @@ public enum NegocioStrategy {
 	STRAT1("Strat1"),
 	STRAT2("Strat2");
 	
-	private final String sulfixo;
+	private final String sulfixoStrategy;
 
 	private NegocioStrategy(String sulfixo) {
-		this.sulfixo = sulfixo;
+		this.sulfixoStrategy = sulfixo;
 	}
 	
 	public String getSulfixoStrategy() {
-		return this.sulfixo; 
+		return this.sulfixoStrategy; 
 	}
 }

@@ -14,8 +14,16 @@ public class Negocio {
 		return "negocio" + this.sulfixo() + this.strategy.getSulfixoStrategy();
 	}
 
+	/**
+	 * Hook-method para adição do sulfixo
+	 * @return Sulfixo
+	 */
 	protected String sulfixo() {
 		return "";
+	}
+
+	public void setStrategy(NegocioStrategy strategy) {
+		this.strategy = strategy;
 	}
 	
 }
