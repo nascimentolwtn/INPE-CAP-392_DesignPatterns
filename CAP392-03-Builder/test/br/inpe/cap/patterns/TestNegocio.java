@@ -11,7 +11,7 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemA() {
-		Negocio negocio = new Negocio();
+		Negocio negocio = new NegocioBasico();
 		assertEquals("negocio", negocio.executar());
 	}
 
@@ -58,7 +58,7 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemD() {
-		Negocio negocioProxy = new NegocioProxy(new Negocio());
+		Negocio negocioProxy = new NegocioProxy(new NegocioBasico());
 		assertEquals("negocioproxy", negocioProxy.executar());
 	}
 

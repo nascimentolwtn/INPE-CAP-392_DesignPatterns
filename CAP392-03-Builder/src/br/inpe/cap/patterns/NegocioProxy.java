@@ -1,6 +1,6 @@
 package br.inpe.cap.patterns;
 
-public class NegocioProxy extends Negocio {
+public class NegocioProxy extends NegocioBasico {
 
 	private Negocio negocio;
 

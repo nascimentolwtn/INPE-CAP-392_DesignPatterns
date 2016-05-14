@@ -1,6 +1,6 @@
 package br.inpe.cap.patterns;
 
-public class NegocioSub2 extends Negocio {
+public class NegocioSub2 extends NegocioBasico {
 
 	@Override
 	protected String sulfixo() {
