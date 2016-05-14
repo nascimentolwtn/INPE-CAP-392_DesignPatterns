@@ -1,17 +1,25 @@
 package br.inpe.cap.patterns;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestNegocio {
+	
+	private Negocio negocio;
 
+	@Before
+	public void setUp(){
+		negocio = new NegocioBasico();
+	}
+	
 	/**
 	 * a) Crie a classe Negocio, que retorna uma String com a palavra "negocio"
 	 */
 	@Test
 	public void testItemA() {
-		Negocio negocio = new NegocioBasico();
 		assertEquals("negocio", negocio.executar());
 	}
 
@@ -21,11 +29,11 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemB() {
-		Negocio negocioSub1 = new NegocioSub1();
-		assertEquals("negociosub1", negocioSub1.executar());
+		negocio = new NegocioSub1();
+		assertEquals("negociosub1", negocio.executar());
 
-		Negocio negocioSub2 = new NegocioSub2();
-		assertEquals("negociosub2", negocioSub2.executar());
+		negocio = new NegocioSub2();
+		assertEquals("negociosub2", negocio.executar());
 	}
 
 	/**
@@ -35,22 +43,19 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemC() {
-		Negocio negocioSub1Strat1 = new NegocioSub1();
-		negocioSub1Strat1.setStrategy(NegocioStrategy.STRAT1);
+		negocio = new NegocioSub1();
+		negocio.setStrategy(NegocioStrategy.STRAT1);
+		assertEquals("negociosub1Strat1", negocio.executar());
 		
-		Negocio negocioSub1Strat2 = new NegocioSub1();
-		negocioSub1Strat2.setStrategy(NegocioStrategy.STRAT2);
+		negocio.setStrategy(NegocioStrategy.STRAT2);
+		assertEquals("negociosub1Strat2", negocio.executar());
 		
-		Negocio negocioSub2Strat1 = new NegocioSub2();
-		negocioSub2Strat1.setStrategy(NegocioStrategy.STRAT1);
+		negocio = new NegocioSub2();
+		negocio.setStrategy(NegocioStrategy.STRAT1);
+		assertEquals("negociosub2Strat1", negocio.executar());
 
-		Negocio negocioSub2Strat2 = new NegocioSub2();
-		negocioSub2Strat2.setStrategy(NegocioStrategy.STRAT2);
-		
-		assertEquals("negociosub1Strat1", negocioSub1Strat1.executar());
-		assertEquals("negociosub1Strat2", negocioSub1Strat2.executar());
-		assertEquals("negociosub2Strat1", negocioSub2Strat1.executar());
-		assertEquals("negociosub2Strat2", negocioSub2Strat2.executar());
+		negocio.setStrategy(NegocioStrategy.STRAT2);
+		assertEquals("negociosub2Strat2", negocio.executar());
 	}
 	
 	/**
@@ -58,8 +63,17 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemD() {
-		Negocio negocioProxy = new NegocioProxy(new NegocioBasico());
+		Negocio negocioProxy = new NegocioProxy(negocio);
 		assertEquals("negocioproxy", negocioProxy.executar());
+	}
+	
+	/**
+	 * e) Crie um Builder com interface fluente que encapsula a criação dessa estrutura. Crie
+	 * testes de unidade que verificam, pela String retornada, se a estrutura criada está correta.
+	 */
+	@Test
+	public void testItemE(){
+		fail("Builder não implementado!");
 	}
 
 }
