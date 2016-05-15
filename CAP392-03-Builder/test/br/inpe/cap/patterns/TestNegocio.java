@@ -11,7 +11,7 @@ public class TestNegocio {
 
 	@Before
 	public void setUp(){
-		negocio = new NegocioBasico();
+		negocio = new NegocioProxy(new NegocioBasico());
 	}
 	
 	/**
@@ -42,6 +42,20 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemC() {
+		negocio.setStrategy(NegocioStrategy.STRAT1);
+		assertEquals("negocioStrat1", negocio.executar());
+		
+		negocio.setStrategy(NegocioStrategy.STRAT2);
+		assertEquals("negocioStrat2", negocio.executar());
+	}
+
+	/**
+	 * c) Crie um Strategy com duas subclasses que adicionam respectivamente “Strat1” e
+	 * “Strat2” na String retornada. Crie um Composite que permita que os dois possam ser
+	 * configurados. 
+	 */
+	@Test
+	public void testItemCemConjuntoComSubClasse1e2() {
 		negocio = new NegocioSub1();
 		negocio.setStrategy(NegocioStrategy.STRAT1);
 		assertEquals("negociosub1Strat1", negocio.executar());
@@ -74,6 +88,9 @@ public class TestNegocio {
 	public void testItemE(){
 		negocio = NegocioBuilder.createNegocio();
 		assertEquals("negocio", negocio.executar());
+		
+//		negocio = NegocioBuilder.createNegocio().withSulfixoSub1();
+//		assertEquals("negociosub1", negocio.executar());
 	}
 
 }
