@@ -1,7 +1,6 @@
 package br.inpe.cap.patterns;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -73,7 +72,8 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemE(){
-		fail("Builder não implementado!");
+		negocio = NegocioBuilder.createNegocio();
+		assertEquals("negocio", negocio.executar());
 	}
 
 }
