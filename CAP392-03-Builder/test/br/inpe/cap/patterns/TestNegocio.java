@@ -11,7 +11,7 @@ public class TestNegocio {
 
 	@Before
 	public void setUp(){
-		negocio = new NegocioProxy(new NegocioBasico());
+		negocio = new NegocioBasico();
 	}
 	
 	/**
@@ -47,6 +47,9 @@ public class TestNegocio {
 		
 		negocio.setStrategy(NegocioStrategy.STRAT2);
 		assertEquals("negocioStrat2", negocio.executar());
+
+		negocio.setStrategy(NegocioStrategy.NULL_STRATEGY);
+		assertEquals("negocio", negocio.executar());
 	}
 
 	/**
