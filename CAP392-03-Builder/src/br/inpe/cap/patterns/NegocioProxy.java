@@ -1,6 +1,6 @@
 package br.inpe.cap.patterns;
 
-public class NegocioProxy extends NegocioBasico {
+public class NegocioProxy implements Negocio {
 
 	private Negocio negocio;
 
@@ -11,6 +11,11 @@ public class NegocioProxy extends NegocioBasico {
 	@Override
 	public String executar() {
 		return this.negocio.executar() + "proxy";
+	}
+
+	@Override
+	public void setStrategy(NegocioStrategy strategy) {
+		this.negocio.setStrategy(strategy);
 	}
 
 }
