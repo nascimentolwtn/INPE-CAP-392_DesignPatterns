@@ -3,7 +3,7 @@ package br.inpe.cap.patterns;
 public class NegocioProxy implements Negocio {
 
 	private Negocio negocio;
-
+	
 	public NegocioProxy(Negocio negocio) {
 		this.negocio = negocio;
 	}
