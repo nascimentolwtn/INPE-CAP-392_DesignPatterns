@@ -84,11 +84,38 @@ public class TestNegocio {
 	 */
 	@Test
 	public void testItemE(){
-		negocio = NegocioBuilder.createNegocio();
+		negocio = new NegocioBuilder().gerarNegocio().construir();
 		assertEquals("negocio", negocio.executar());
 		
-//		negocio = NegocioBuilder.createNegocio().withSulfixoSub1();
-//		assertEquals("negociosub1", negocio.executar());
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoSub1().construir();
+		assertEquals("negociosub1", negocio.executar());
+		
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoSub2().construir();
+		assertEquals("negociosub2", negocio.executar());
+		
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).construir();
+		assertEquals("negocioStrat1", negocio.executar());
+		
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT2).construir();
+		assertEquals("negocioStrat2", negocio.executar());
+
+		negocio = new NegocioBuilder().gerarNegocio().comoProxy().construir();
+		assertEquals("negocioproxy", negocio.executar());
+
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().construir();
+		assertEquals("negocioStrat1proxy", negocio.executar());
+	}
+	
+	@Test
+	public void testQuebrandoObjetoConstruidoPelaInterfaceFluenteBuilder() {
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).construir();
+		assertEquals("negocioStrat2proxy", negocio.executar());
+		
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().construir();
+		assertEquals("negociosub1proxy", negocio.executar());
+		
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT1).construir();
+		assertEquals("negociosub1Strat1proxy", negocio.executar());
 	}
 
 }
