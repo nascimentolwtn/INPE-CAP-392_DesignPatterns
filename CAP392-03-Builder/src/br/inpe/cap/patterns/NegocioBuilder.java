@@ -3,9 +3,12 @@ package br.inpe.cap.patterns;
 public class NegocioBuilder {
 	
 	private Negocio negocio;
+	
+	public NegocioBuilder() {
+		negocio = new NegocioBasico();
+	}
 
 	public NegocioBuilder gerarNegocio() {
-		negocio = new NegocioBasico();
 		return this;
 	}
 	

@@ -120,5 +120,26 @@ public class TestNegocio {
 		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().construir();
 		assertEquals("negociosub1Strat2proxy", negocio.executar());
 	}
+	@Test
+	public void testProxiesMultiplosInterfaceFluente() {
+		negocio = new NegocioBuilder().gerarNegocio().comoProxy().comoProxy().comoProxy().construir();
+		assertEquals("negocioproxyproxyproxy", negocio.executar());
+		
+		negocio = new NegocioBuilder().gerarNegocio().comoProxy().comSulfixoSub1().comoProxy().comoProxy().construir();
+		assertEquals("negociosub1proxyproxy", negocio.executar());
+	}
 
+
+	@Test
+	public void testInterfaceFluenteBuilderSemUsarMetodoGerarNegocio() {
+		negocio = new NegocioBuilder().comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().construir();
+		assertEquals("negociosub1Strat2proxy", negocio.executar());
+		
+		negocio = new NegocioBuilder().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().construir();
+		assertEquals("negociosub1Strat2proxy", negocio.executar());
+		
+		negocio = new NegocioBuilder().comSulfixoSub1().comoProxy().construir();
+		assertEquals("negociosub1proxy", negocio.executar());
+	}
+	
 }
