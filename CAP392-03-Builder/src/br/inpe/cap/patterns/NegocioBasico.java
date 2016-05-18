@@ -28,4 +28,9 @@ public class NegocioBasico implements Negocio {
 		this.strategy = strategy;
 	}
 	
+	@Override
+	public NegocioStrategy getStrategy() {
+		return this.strategy;
+	}
+	
 }

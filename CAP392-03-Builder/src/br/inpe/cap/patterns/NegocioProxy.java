@@ -17,5 +17,10 @@ public class NegocioProxy implements Negocio {
 	public void setStrategy(NegocioStrategy strategy) {
 		this.negocio.setStrategy(strategy);
 	}
+	
+	@Override
+	public NegocioStrategy getStrategy() {
+		return this.negocio.getStrategy();
+	}
 
 }

@@ -107,15 +107,18 @@ public class TestNegocio {
 	}
 	
 	@Test
-	public void testQuebrandoObjetoConstruidoPelaInterfaceFluenteBuilder() {
+	public void testQuebrandoStrategyConstruidoPelaInterfaceFluenteBuilder() {
 		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).construir();
 		assertEquals("negocioStrat2proxy", negocio.executar());
 		
-		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().construir();
-		assertEquals("negociosub1proxy", negocio.executar());
-		
 		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT1).construir();
 		assertEquals("negociosub1Strat1proxy", negocio.executar());
+	}
+
+	@Test
+	public void testCopiaDeObjetoConstruidoPelaInterfaceFluenteBuilder() {
+		negocio = new NegocioBuilder().gerarNegocio().comSulfixoStrategy(NegocioStrategy.STRAT1).comoProxy().comSulfixoStrategy(NegocioStrategy.STRAT2).comSulfixoSub1().comoProxy().construir();
+		assertEquals("negociosub1Strat2proxy", negocio.executar());
 	}
 
 }

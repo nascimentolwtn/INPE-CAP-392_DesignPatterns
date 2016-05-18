@@ -10,12 +10,16 @@ public class NegocioBuilder {
 	}
 	
 	public NegocioBuilder comSulfixoSub1() {
-		negocio = new NegocioSub1();
+		NegocioSub1 negocioSub1 = new NegocioSub1();
+		negocioSub1.setStrategy(this.negocio.getStrategy());
+		this.negocio = negocioSub1;
 		return this;
 	}
 
 	public NegocioBuilder comSulfixoSub2() {
-		negocio = new NegocioSub2();
+		NegocioSub2 negocioSub2 = new NegocioSub2();
+		negocioSub2.setStrategy(this.negocio.getStrategy());
+		this.negocio = negocioSub2;
 		return this;
 	}
 
