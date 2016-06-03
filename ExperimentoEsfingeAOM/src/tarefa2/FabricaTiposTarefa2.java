@@ -1,7 +1,8 @@
 package tarefa2;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.esfinge.aom.api.model.IEntityType;
 import org.esfinge.aom.exceptions.EsfingeAOMException;
@@ -30,6 +31,23 @@ public class FabricaTiposTarefa2 {
 		tipoCobranca.addPropertyType(previsaoPropertyType);
 		tipoCobranca.addPropertyType(faturamentoPropertyType);
 		tipoCobranca.addPropertyType(quantidadeItensPropertyType);
+		
+		//adicionando validações
+		empresaPropertyType.setProperty("notblank", true);
+		cnpjPropertyType.setProperty("cnpj", true);
+		destinatarioPropertyType.setProperty("email", true);
+		
+		Map<String,Object> valorMetadados = new HashMap<>();
+		valorMetadados.put("min", 0L);
+		valorMetadados.put("max", 5000L);
+		valorPropertyType.setProperty("range", valorMetadados);
+
+		previsaoPropertyType.setProperty("future", true);
+		faturamentoPropertyType.setProperty("past", true);
+
+		Map<String,Object> quantidadeItensMetadados = new HashMap<>();
+		quantidadeItensMetadados.put("min", 1L);
+		quantidadeItensPropertyType.setProperty("range", quantidadeItensMetadados);
 		
 		return tipoCobranca;
 	}
