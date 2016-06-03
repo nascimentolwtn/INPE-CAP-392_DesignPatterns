@@ -12,6 +12,7 @@ import org.esfinge.aom.model.dynamic.factory.AdapterFactory;
 
 public class ValidadorTarefa2 {
 	
+	// Tempo total: 18min 11s
 	public boolean validarEntidadeCobranca(IEntity cobranca) throws Exception {
 		
 		//Transformando para Java Bean
