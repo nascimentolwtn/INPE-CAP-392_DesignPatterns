@@ -9,6 +9,7 @@ public class ValidadorTarefa1 {
 	
 	private Pattern pattternCpf = Pattern.compile("[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}");
 
+	// Tempo total: 44min 12s
 	public boolean validarEntidadePessoa(IEntity pessoa) throws Exception{
 		boolean validade = true;
 		
